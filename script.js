@@ -56,7 +56,7 @@ let counter= 0;
 // the function does not need to return anything
 function addToDoItem(text) {
   if (typeof text !== "string") {
-    console.error("Input invalid");
+    console.error("Input invalid, must be a string");
     return;
   }
   let firstToDo = {
@@ -76,17 +76,20 @@ function addToDoItem(text) {
 // that matches the id passed to the function, remove it from the array
 // the function does not need to return anything
 function removeToDoItem(todoId) {
-  if (typeof todoId !== 'number'){
+  if (typeof todoId !== 'number') {
     console.error('Input invalid');
     return;
   }
-  if (todoId >= 0 && todoId <todoItems.length){
-    todoItems.splice(todoId, 1);
+
+  const indexToRemove = todoItems.findIndex(todo => todo.id === todoId);
+
+  if (indexToRemove !== -1) {
+    todoItems.splice(indexToRemove, 1);
   }
-  // Implement the logic to add a task here
+}
 
   
-}
+
 
 // Function to mark a task as completed
 // It should accept a number as a parameter (id of the todo item)
